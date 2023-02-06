@@ -1,0 +1,41 @@
+import React from 'react';
+
+class SyntaxAnalyzer extends React.Component {
+  state = {
+    code: '',
+    syntaxErrors: []
+  };
+
+  handleCodeChange = (event) => {
+    this.setState({ code: event.target.value });
+  };
+
+  analyzeSyntax = () => {
+    const code = this.state.code;
+    const syntaxErrors = [];
+
+    // Aquí podrías agregar la lógica para analizar la sintaxis
+    // y detectar errores.
+
+    this.setState({ syntaxErrors });
+  };
+
+  render() {
+    return (
+      <div>
+        <textarea
+          value={this.state.code}
+          onChange={this.handleCodeChange}
+        />
+        <button onClick={this.analyzeSyntax}>Analizar Sintaxis</button>
+        <div>
+          {this.state.syntaxErrors.map((error, index) => (
+            <div key={index}>{error}</div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default SyntaxAnalyzer;
